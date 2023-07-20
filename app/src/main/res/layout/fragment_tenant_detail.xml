@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="tenant"
+            type="com.ubaya.uas_anmp.model.Tenant" />
+        <variable
+            name="listener"
+            type="com.ubaya.uas_anmp.view.ButtonWriteReviewClickListener" />
+    </data>
+
+<FrameLayout
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.TenantDetailFragment">
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageViewTenantDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    app:imageUrl="@{tenant.photoUrl}"
+                    app:progressBar="@{progressLoadImageTenantDetail}"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <Button
+                    android:id="@+id/buttonAddReview"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="top"
+                    android:onClick="@{listener::onButtonWriteReviewClick}"
+                    android:tag="@{tenant.id}"
+                    android:text="Write a review"
+                    android:textColor="@color/secondary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textDeskripsiDetail" />
+
+                <ProgressBar
+                    android:id="@+id/progressLoadImageTenantDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewTenantDetail"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewTenantDetail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textDeskripsiDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{tenant.deskripsi}"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textPembayaranDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                <TextView
+                    android:id="@+id/textKategoriDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{tenant.kategori}"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toStartOf="@+id/textNamaTenantDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textNamaTenantDetail" />
+
+                <TextView
+                    android:id="@+id/textNamaTenantDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{tenant.name}"
+                    android:textSize="34sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewTenantDetail" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Information"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textKategoriDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textKategoriDetail" />
+
+                <TextView
+                    android:id="@+id/textLokasiDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/ic_baseline_location_on_16"
+                    android:text="@{tenant.lokasi}"
+                    app:layout_constraintStart_toStartOf="@+id/textView10"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/textJamBukaDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_watch_later_16"
+                    android:text="@{tenant.jamBuka}"
+                    app:layout_constraintStart_toStartOf="@+id/textLokasiDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textLokasiDetail" />
+
+                <TextView
+                    android:id="@+id/textPembayaranDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_credit_card_16"
+                    android:text="@{tenant.pembayaran}"
+                    app:layout_constraintStart_toStartOf="@+id/textJamBukaDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textJamBukaDetail" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Review"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textDeskripsiDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textDeskripsiDetail" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewReviewDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView16"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonAddReview" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Description"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textPembayaranDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textPembayaranDetail" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>
+</layout>

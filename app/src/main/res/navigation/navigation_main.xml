@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/itemHome">
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="com.ubaya.uas_anmp.view.TenantListFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_tenant_list">
+        <action
+            android:id="@+id/action_tenant_detail"
+            app:destination="@id/tenantDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenantDetailFragment"
+        android:name="com.ubaya.uas_anmp.view.TenantDetailFragment"
+        android:label="Tenant"
+        tools:layout="@layout/fragment_tenant_detail">
+        <argument android:name="tenantId"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionAddReviewFragment"
+            app:destination="@id/addReviewFragment" />
+        <argument
+            android:name="tenantName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemAccount"
+        android:name="com.ubaya.uas_anmp.view.AccountFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_account" >
+        <argument
+            android:name="username"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addReviewFragment"
+        android:name="com.ubaya.uas_anmp.view.AddReviewFragment"
+        android:label="Rate and Review"
+        tools:layout="@layout/fragment_add_review">
+        <argument
+            android:name="tenantId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemPromo"
+        android:name="com.ubaya.uas_anmp.view.PromoListFragment"
+        android:label="Promo"
+        tools:layout="@layout/fragment_promo_list">
+        <action
+            android:id="@+id/actionPromoDetailFragment"
+            app:destination="@id/promoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/promoDetailFragment"
+        android:name="com.ubaya.uas_anmp.view.PromoDetailFragment"
+        android:label="Promo"
+        tools:layout="@layout/fragment_promo_detail">
+        <argument
+            android:name="promoId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemReservation"
+        android:name="com.ubaya.uas_anmp.view.ReservationListFragment"
+        android:label="Reservation"
+        tools:layout="@layout/fragment_reservation_list" >
+        <action
+            android:id="@+id/actionAddreservationFragment"
+            app:destination="@id/addReservationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addReservationFragment"
+        android:name="com.ubaya.uas_anmp.view.AddReservationFragment"
+        android:label="Reservation"
+        tools:layout="@layout/fragment_add_reservation" />
+</navigation>
